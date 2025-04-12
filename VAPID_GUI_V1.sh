@@ -42,7 +42,8 @@ Script Started $now."
 (#Start
 echo "# Downloading perl script and collecting sample names from VCF"; sleep 2
  
-curl https://raw.githubusercontent.com/pcingola/SnpEff/master/scripts/vcfEffOnePerLine.pl > vcfEffOnePerLine.pl
+wget https://ucdavis.box.com/shared/static/wslxtuktuiunpopjuq3hvz046q7954u0.pl 
+mv wslxtuktuiunpopjuq3hvz046q7954u0.pl vcfEffOnePerLine.pl
 a=$(awk 'NR==3 {print $1}' parameters1)
 b=$(awk -F"/" 'NR==3 {print $NF}' parameters1 | sed 's/.gz//g' | sed 's/.vcf//g') #Filename
 bcftools query -l $a | datamash transpose > ${b}.samples
