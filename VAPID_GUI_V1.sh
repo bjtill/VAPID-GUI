@@ -1,6 +1,7 @@
 #!/bin/bash
 #BT & AG, March 14, 2023
 #GUI version May 24, 2024
+#updated permissions for perl script
 
 ##################################################################################################################################
 wget https://ucdavis.box.com/shared/static/lg3804zgt8j47v5c9agv432o3cd4kqdp.jpg
@@ -44,6 +45,7 @@ echo "# Downloading perl script and collecting sample names from VCF"; sleep 2
  
 wget https://ucdavis.box.com/shared/static/wslxtuktuiunpopjuq3hvz046q7954u0.pl 
 mv wslxtuktuiunpopjuq3hvz046q7954u0.pl vcfEffOnePerLine.pl
+chmod +x vcfEffOnePerLine.pl
 a=$(awk 'NR==3 {print $1}' parameters1)
 b=$(awk -F"/" 'NR==3 {print $NF}' parameters1 | sed 's/.gz//g' | sed 's/.vcf//g') #Filename
 bcftools query -l $a | datamash transpose > ${b}.samples
